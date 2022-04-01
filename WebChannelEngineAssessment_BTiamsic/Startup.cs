@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Helper;
+
 
 namespace WebChannelEngineAssessment_BTiamsic
 {
@@ -28,6 +30,7 @@ namespace WebChannelEngineAssessment_BTiamsic
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            ApiHelper.Initialize();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

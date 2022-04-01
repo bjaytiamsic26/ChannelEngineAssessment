@@ -1,8 +1,44 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model Helper.Models.ListOrderMostSoldItemModeL
+
+@{
+    ViewData["Title"] = "Index";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h1>Index</h1>
+
+<div>
+    <h4>In Progress Orders</h4>
+    <hr />
+    <dl class="row">
+            {
+                @foreach(var order in @Model.Orders){
+                    <ul>
+                        <li>ID: @order.Id</li>
+                        <li>Status: @order.Status</li>
+                    </ul>
+                }
+            }
+    </dl>
+</div>
+<div>
+    <h4>Most ORdered Products</h4>
+    <hr />
+    <dl class="row">
+        {
+            @foreach(var line in @Model.Lines)
+            {
+                <ul>
+                    <li>Merchant Product No.:  @line.MerchantProductNo</li>
+                    <li>Description: @line.Description</li>
+                    <li>Total Quantity: @line.Quantity</li>
+                    <li>GTin: @line.GTin</li>
+                </ul>
+            }
+        }
+    </dl>
+</div>
+<div>
+    <h4>Update Product Status</h4>
+    <hr />
+    @Url.Action("UpdateProduct", @Model.UpdatingProduct);
 </div>
